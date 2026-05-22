@@ -71,6 +71,8 @@ https://github.com/user-attachments/assets/28e65618-ce09-4180-889e-08502989e49c
 
 CodeIAK receives an ICAAP-style stress-test Excel file as a read-only source, calculates risk indicators deterministically, locks the calculated values into a dashboard specification, uses UIgen to generate the React interface, validates the generated output, and serves the result locally.
 
+<p align="center">
+
 <table align="center" width="72%">
   <tr>
     <th>Stage</th>
@@ -97,6 +99,8 @@ CodeIAK receives an ICAAP-style stress-test Excel file as a read-only source, ca
     <td>Modifies only <code>src/App.jsx</code> and serves local preview</td>
   </tr>
 </table>
+
+</p>
 
 > **Execution principle:** the LLM is not used to invent spreadsheet values. Calculations are performed deterministically from the attached Excel data; UIgen is used for interface structure, layout and presentation.
 
@@ -201,6 +205,16 @@ Most domain labs remain chat- or plan-oriented today. However, selected Agent wo
 
 ---
 
+## Customization and extensibility
+
+CodeIAK is designed around configurable model slots and role-specific workflows. Users can assign different local GGUF models to Fast, Balanced, Heavy, Python, UI, Dialogue, Vision and Specialist roles.
+
+Because inference runs locally, capability depends on the hardware and models available on the user's machine. More powerful machines can run larger or more specialized models; smaller machines can still use lighter models and narrower workflows.
+
+Model paths can point to locally stored GGUF files, including models downloaded from Hugging Face and configured manually. Over time, domain suites can be expanded for SQL, VBA, Excel, UI generation, finance/risk, documentation, or other language/framework-specific assistants.
+
+---
+
 ## How the system works
 
 ```
@@ -254,16 +268,6 @@ All inference stays **on-machine**. No cloud API is required for core operation.
 | **Specialist–Builder (Agent)** | Optional domain brief merged into builder proposals for structured artifacts |
 
 **Vision slot:** configurable in Model Manager (including multimodal projector path) — **inference routing is not active yet**.
-
----
-
-## Customization and extensibility
-
-CodeIAK is designed around configurable model slots and role-specific workflows. Users can assign different local GGUF models to Fast, Balanced, Heavy, Python, UI, Dialogue, Vision and Specialist roles.
-
-Because inference runs locally, capability depends on the hardware and models available on the user’s machine. More powerful machines can run larger or more specialized models; smaller machines can still use lighter models and narrower workflows.
-
-Model paths can point to locally stored GGUF files, including models downloaded from Hugging Face and configured manually. Over time, domain suites can be expanded for SQL, VBA, Excel, UI generation, finance/risk, documentation, or other language/framework-specific assistants.
 
 ---
 
