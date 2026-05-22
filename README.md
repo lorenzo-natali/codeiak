@@ -47,75 +47,81 @@ The goal is not opaque code generation. It is **inspectable, reversible automati
 
 ## Demo — Excel-to-Dashboard Agent Workflow
 
-<p align="center">
-  <em>Demo: Excel stress-test data → deterministic metrics → UIgen dashboard rendering → data-lock validation → React build validation → local preview.</em>
-</p>
-
-CodeIAK can transform an attached spreadsheet into a validated React interface through a controlled Agent workflow.
-
-In this demo, CodeIAK receives an ICAAP-style stress-test Excel file as a **read-only data source** and generates a React dashboard by modifying only `src/App.jsx`.
+<!-- When a demo video is available, wrap the cover image:
+<a href="https://github.com/user-attachments/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
+  <img src="docs/media/images/codeiak_excel_dashboard_cover.jpeg" alt="CodeIAK Excel-to-Dashboard Agent workflow" width="860">
+</a>
+-->
 
 <p align="center">
-  <img src="docs/media/images/codeiak_excel_dashboard_cover.jpeg" alt="CodeIAK Excel-to-Dashboard demo cover" width="860">
+  <img src="docs/media/images/codeiak_excel_dashboard_cover.jpeg" alt="CodeIAK Excel-to-Dashboard Agent workflow" width="860">
 </p>
 
-The workflow combines deterministic data processing with local UI generation:
+<p align="center">
+  <em>Excel stress-test data → deterministic metrics → UIgen dashboard rendering → data-lock validation → React build validation → local preview.</em>
+</p>
 
-1. the Excel file is attached as source data;
-2. CodeIAK detects the spreadsheet schema;
-3. stress-test indicators are calculated deterministically;
-4. calculated values are locked into a dashboard specification;
-5. the **UIgen** model generates the React interface;
-6. CodeIAK validates that the generated UI preserves the calculated values;
-7. only `src/App.jsx` is modified;
-8. a backup is created before the write;
-9. the React build is validated;
-10. the result is served in local preview.
+CodeIAK receives an ICAAP-style stress-test Excel file as a read-only source, calculates risk indicators deterministically, locks the calculated values into a dashboard specification, uses UIgen to generate the React interface, validates the generated output, and serves the result locally.
+
+| Stage | What CodeIAK does |
+| --- | --- |
+| Source | Reads the Excel file as read-only input |
+| Calculation | Computes stress-test metrics deterministically |
+| UI generation | Uses UIgen to render the React interface |
+| Control | Runs data-lock validation and build validation |
+| Output | Modifies only `src/App.jsx` and serves local preview |
 
 > **Execution principle:** the LLM is not used to invent spreadsheet values. Calculations are performed deterministically from the attached Excel data; UIgen is used for interface structure, layout and presentation.
 
-### Runtime evidence (in-app)
+### Runtime evidence
 
 <table>
   <tr>
-    <td width="50%" align="center" valign="top">
-      <img src="docs/media/images/codeiak_system_map.png" alt="CodeIAK Live System Map" width="400">
-      <p align="center"><em><strong>1.</strong> Live System Map: the execution route shows Agent runtime, UI model involvement, backup, apply and validation.</em></p>
+    <td width="50%" align="center">
+      <img src="docs/media/images/codeiak_system_map.png" alt="CodeIAK Live System Map" width="100%">
+      <br>
+      <sub><strong>Live System Map.</strong> The route shows Agent runtime, UI model involvement, backup, apply and validation.</sub>
     </td>
-    <td width="50%" align="center" valign="top">
-      <img src="docs/media/images/codeiak_backup.png" alt="CodeIAK backup snapshots" width="400">
-      <p align="center"><em><strong>2.</strong> Backups: CodeIAK creates restore points before applying Agent changes.</em></p>
+    <td width="50%" align="center">
+      <img src="docs/media/images/codeiak_backup.png" alt="CodeIAK backup snapshots" width="100%">
+      <br>
+      <sub><strong>Backups.</strong> CodeIAK creates restore points before applying Agent changes.</sub>
     </td>
   </tr>
 </table>
 
 <table>
   <tr>
-    <td width="50%" align="center" valign="top">
-      <img src="docs/media/images/codeiak_review_validation.png" alt="CodeIAK Review tab with validation passed" width="400">
-      <p align="center"><em><strong>1.</strong> Review and validation: the run modifies only src/App.jsx, passes npm build validation and remains revertible.</em></p>
+    <td width="50%" align="center">
+      <img src="docs/media/images/codeiak_review_validation.png" alt="CodeIAK Review tab with validation passed" width="100%">
+      <br>
+      <sub><strong>Review and validation.</strong> The run modifies only <code>src/App.jsx</code>, passes build validation and remains revertible.</sub>
     </td>
-    <td width="50%" align="center" valign="top">
-      <img src="docs/media/images/codeiak_tab_preview.png" alt="CodeIAK local React dashboard preview" width="400">
-      <p align="center"><em><strong>2.</strong> Local preview: the generated React dashboard is served locally after validation.</em></p>
+    <td width="50%" align="center">
+      <img src="docs/media/images/codeiak_tab_preview.png" alt="CodeIAK local React dashboard preview" width="100%">
+      <br>
+      <sub><strong>Local preview.</strong> The generated React dashboard is served inside CodeIAK after validation.</sub>
     </td>
   </tr>
 </table>
 
-### Generated dashboard (browser)
+### Browser output
 
-<table>
-  <tr>
-    <td width="50%" align="center" valign="top">
-      <img src="docs/media/images/codeiak_browser_preview_overview.png" alt="CodeIAK generated stress-test dashboard in full browser view" width="420">
-      <p align="center"><em><strong>1.</strong> This browser preview shows the top-level dashboard generated from the attached Excel file. CodeIAK calculates the stress-test indicators deterministically, then renders them into a React interface with KPI cards, capital position analysis, data-quality checks, control exceptions and management insight.</em></p>
-    </td>
-    <td width="50%" align="center" valign="top">
-      <img src="docs/media/images/codeiak_browser_preview_stress_impact.png" alt="CodeIAK stress impact table with severity classification" width="420">
-      <p align="center"><em><strong>2.</strong> The stress impact table shows the row-level output of the Excel-to-dashboard workflow. Each metric is classified by severity according to deterministic rules, preserving the source values while making the risk impact easier to review.</em></p>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <img src="docs/media/images/codeiak_browser_preview_overview.png" alt="Generated dashboard overview in browser" width="900">
+</p>
+
+<p align="center">
+  <em><strong>Browser preview — dashboard overview.</strong> The generated React dashboard shows deterministic KPIs, critical capital position, data-quality indicators, baseline-vs-stressed comparison, control exceptions and management insight.</em>
+</p>
+
+<p align="center">
+  <img src="docs/media/images/codeiak_browser_preview_stress_impact.png" alt="Generated stress impact table in browser" width="900">
+</p>
+
+<p align="center">
+  <em><strong>Browser preview — stress impact table.</strong> Row-level stress metrics preserve source values while adding calculated variation and severity classification.</em>
+</p>
 
 ---
 
@@ -220,7 +226,7 @@ All inference stays **on-machine**. No cloud API is required for core operation.
 ## Multi-model routing
 
 | Pattern | Behavior |
-|---------|----------|
+| --- | --- |
 | **Orchestrator (Ask)** | CodeIAK selects dialogue, specialist suggestions, or standard Ask paths per request |
 | **Targeted Ask** | Bypass general routing; send directly to configured **Dialogue** or **Specialist** slot |
 | **Specialist profile** | Domain display name, description, and trigger terms in Model Manager |
@@ -323,7 +329,7 @@ For portfolio and recruitment purposes, treat this README as the canonical publi
 ## Technologies
 
 | Layer | Stack |
-|-------|--------|
+| --- | --- |
 | UI | React, Vite |
 | Backend | Python, Flask |
 | Inference | `llama-cpp-python`, local GGUF models (Qwen2.5-Coder family defaults) |
