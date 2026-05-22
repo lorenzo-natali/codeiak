@@ -1,0 +1,14 @@
+.DS_Store
+Screenshots_elaborazione/
+*.xlsx
+*.mov
+*.mp4
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.gguf
+*.bin
+*.safetensors
+*.pt
+*.onnx
