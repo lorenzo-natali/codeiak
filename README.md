@@ -48,15 +48,18 @@ The goal is not opaque code generation. It is **inspectable, reversible automati
 ## Demo — Excel-to-Dashboard Agent Workflow
 
 <p align="center">
-  <video src="docs/media/videos/codeiak_excel_to_dashboard_demo.mp4" controls width="900"></video>
-</p>
-
-<p align="center">
-  <a href="docs/media/videos/codeiak_excel_to_dashboard_demo.mp4">Watch / download the demo video</a>
+  <video controls width="900">
+    <source src="docs/media/videos/codeiak_excel_to_dashboard_demo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </p>
 
 <p align="center">
   <em>Excel stress-test data → deterministic metrics → UIgen dashboard rendering → data-lock validation → React build validation → local preview.</em>
+</p>
+
+<p align="center">
+  <sub><a href="docs/media/videos/codeiak_excel_to_dashboard_demo.mp4">Open video file</a></sub>
 </p>
 
 CodeIAK receives an ICAAP-style stress-test Excel file as a read-only source, calculates risk indicators deterministically, locks the calculated values into a dashboard specification, uses UIgen to generate the React interface, validates the generated output, and serves the result locally.
