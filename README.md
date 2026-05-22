@@ -45,6 +45,20 @@ The goal is not opaque code generation. It is **inspectable, reversible automati
 
 ---
 
+## Interface preview
+
+CodeIAK's primary interface is a controlled three-panel workspace: project navigation and mode controls on the left, chat-based task intake in the center, and execution/review tools on the right.
+
+<p align="center">
+  <img src="docs/media/images/dashboard_start.png" alt="CodeIAK interface overview" width="900">
+</p>
+
+<p align="center">
+  <em>CodeIAK's main workspace combines mode-aware task intake, local model controls, reviewable changes, activity traces, preview tools and controlled execution in a single interface.</em>
+</p>
+
+---
+
 ## Demo — Excel-to-Dashboard Agent Workflow
 
 https://github.com/user-attachments/assets/28e65618-ce09-4180-889e-08502989e49c
@@ -114,12 +128,6 @@ CodeIAK receives an ICAAP-style stress-test Excel file as a read-only source, ca
 <p align="center">
   <em><strong>Browser preview — stress impact table.</strong> Row-level stress metrics preserve source values while adding calculated variation and severity classification.</em>
 </p>
-
----
-
-## Interface preview
-
-The primary interface is a three-panel workspace: project sidebar and mode controls, conversational chat, and an inspector with Review, Activity, Run, Servers, Preview, and Backups tabs.
 
 ---
 
