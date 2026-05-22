@@ -4,18 +4,20 @@
 
 # CodeIAK
 
-**Local-first AI coding agent with multi-model orchestration, reviewable changes, and agentic workflows.**
+**Local-first, offline-capable AI coding agent** with multi-model orchestration, reviewable changes, and agentic workflows — inspired by the usefulness of Cursor/Codex-style workflows, but designed to run locally with configurable GGUF models and controlled execution.
 
 > **Status:** Active Alpha · Work in Progress  
 > **This repository:** Public project page and showcase — **not** a full code release or install guide.
 
 ---
 
-CodeIAK is a **local-first AI coding agent** for developers who want powerful automation without giving up control. It runs on your machine using **local GGUF models**, a dedicated workspace UI, and a backend that can analyze and change project files — but treats every edit as a **reviewable proposal** with backups, validation, repair, and revert paths when things go wrong.
+CodeIAK is a **local-first, offline-capable AI coding agent** for developers who want powerful automation without giving up control. It runs on your machine using **local GGUF models**, a dedicated workspace UI, and a backend that can analyze and change project files — but treats every edit as a **reviewable proposal** with backups, validation, repair, and revert paths when things go wrong.
 
 Unlike a generic chat wrapper around a single model, CodeIAK is built as a **small agent runtime**: purpose-specific model slots, mode-aware workflows, and transparent execution you can inspect step by step.
 
 Audit and risk workflows are used as professional demo scenarios, but they are **not** the product boundary. CodeIAK is designed as a general-purpose local coding agent for controlled file editing, data-to-UI workflows, validation, and traceable execution.
+
+Longer term, the project aims to explore what a Cursor/Codex-style coding workflow can look like when it is local-first, model-configurable and privacy-preserving.
 
 ---
 
@@ -151,6 +153,8 @@ CodeIAK receives an ICAAP-style stress-test Excel file as a read-only source, ca
 
 Configure **eight local model slots**: Fast, Balanced, Heavy, Python, UI, Dialogue, Vision, and Specialist. CodeIAK’s orchestrator selects roles per task type — decomposition, proposals, conversational Ask, self-knowledge, context compaction, and more. Memory suitability hints help avoid loading models that exceed available RAM.
 
+Because inference runs locally, capability depends on the hardware and models available on the user’s machine. Larger machines can run larger GGUF models and more specialized role assignments; smaller machines can still use lighter models and narrower workflows.
+
 ### Document and data intelligence
 
 Attach **PDF, DOCX, and XLSX** files to requests. Attachments remain **read-only source material**: they are not silently imported into the workspace or modified in place.
@@ -168,7 +172,7 @@ In selected Agent workflows, spreadsheet data can be parsed, classified, calcula
 
 ### Transparency features
 
-- **Self Knowledge** — Grounded answers about CodeIAK’s modes and behavior (deterministic FAQ plus sourced excerpts)
+- **Self Knowledge** — Grounded answers about CodeIAK’s own modes, architecture and behavior, using deterministic FAQ material and sourced excerpts from internal documentation/code
 - **Mode arbitration** — When a request doesn’t fit the current mode, CodeIAK recommends a switch and can continue with the same prompt
 - **Live System Map** — Architecture route visualization from current execution signals in the status panel
 
@@ -177,6 +181,14 @@ In selected Agent workflows, spreadsheet data can be parsed, classified, calcula
 Specialized assistants exist for **Excel formulas/templates**, **SQL drafting**, **VBA review**, and **UI design guidance**.
 
 Most domain labs remain chat- or plan-oriented today. However, selected Agent workflows are already supported — for example, spreadsheet-to-dashboard generation with deterministic calculations, UIgen rendering, data-lock validation, backup, build validation and local preview.
+
+### Customization and extensibility
+
+CodeIAK is designed around **configurable model slots** and role-specific workflows. Users can assign different local GGUF models to Fast, Balanced, Heavy, Python, UI, Dialogue, Vision and Specialist roles. The system becomes more capable on machines that can run larger or more specialized models.
+
+Model paths can point to locally stored GGUF files, including models downloaded from Hugging Face and configured manually.
+
+Domain suites can be extended over time: SQL, VBA, Excel, UI generation, finance/risk, documentation, or other language/framework-specific assistants. The aim is not a fixed assistant, but a **controllable local agent workspace** that can be adapted to the user’s machine, models and workflows.
 
 ---
 
@@ -240,6 +252,7 @@ All inference stays **on-machine**. No cloud API is required for core operation.
 
 - Default **offline mode** restricts network activity
 - **Downloads Allowed** is an explicit, user-controlled gate for dependency installs
+- Future controlled network tools may allow the agent to download files, retrieve packages or verify external information **only when explicitly authorized** — permissioned access, not silent internet browsing
 - Backend binds to **local host**; models load from local GGUF paths you configure
 
 ---
@@ -294,20 +307,25 @@ CodeIAK is in **Active Alpha · Work in Progress**. Substantial areas are implem
 **Near term**
 
 - Active Alpha hardening and manual test campaign completion
-- Product-facing polish for core intake and handoff flows
+- Product-facing polish for core intake, mode handoff and review flows
 - Public documentation and selective open-release planning
+- Better README/demo packaging for the public showcase
 
 **Medium term**
 
-- Lab mode shell and expanded domain workflows
-- Vision slot routing for screenshot / image tasks
-- Multitask resume after review
-- Richer specialist auto-routing
+- Expanded domain suites for SQL, VBA, Excel, UI generation, documentation and other language/framework-specific workflows
+- Stronger Agent runtime and Multitask resume after review
+- Vision slot routing for screenshot and image-assisted tasks
+- Richer specialist auto-routing and domain profile configuration
+- Controlled network access for explicitly authorized downloads, package retrieval and external information checks
 
 **Longer term**
 
+- Local-first Cursor/Codex-style coding workflows with deeper autonomous planning under review gates
+- Controlled local file discovery — optional, permissioned search across user-approved folders outside the active workspace
 - Deeper project memory and cross-session continuity
-- Installable public release with setup guides and licensing clarity
+- Broader model customization through local GGUF models, including manually configured Hugging Face downloads
+- Installable public release with setup guides, licensing clarity and hardware/model recommendations
 
 *Roadmap items are directional, not commitments.*
 
