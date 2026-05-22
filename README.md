@@ -47,14 +47,12 @@ The goal is not opaque code generation. It is **inspectable, reversible automati
 
 ## Demo — Excel-to-Dashboard Agent Workflow
 
-<!-- When a demo video is available, wrap the cover image:
-<a href="https://github.com/user-attachments/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
-  <img src="docs/media/images/codeiak_excel_dashboard_cover.jpeg" alt="CodeIAK Excel-to-Dashboard Agent workflow" width="860">
-</a>
--->
+<p align="center">
+  <video src="docs/media/videos/codeiak_excel_to_dashboard_demo.mp4" controls width="900"></video>
+</p>
 
 <p align="center">
-  <img src="docs/media/images/codeiak_excel_dashboard_cover.jpeg" alt="CodeIAK Excel-to-Dashboard Agent workflow" width="860">
+  <a href="docs/media/videos/codeiak_excel_to_dashboard_demo.mp4">Watch / download the demo video</a>
 </p>
 
 <p align="center">

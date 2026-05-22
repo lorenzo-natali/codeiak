@@ -12,3 +12,5 @@ __pycache__/
 *.safetensors
 *.pt
 *.onnx
+
+!docs/media/videos/codeiak_excel_to_dashboard_demo.mp4
