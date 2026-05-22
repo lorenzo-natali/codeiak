@@ -246,7 +246,7 @@ All inference stays **on-machine**. No cloud API is required for core operation.
 
 ## OpenClaw integration (optional, external)
 
-CodeIAK includes an **optional OpenClaw bridge** for external orchestrators. This is an **integration path**, not an in-app autonomous director.
+CodeIAK includes an **optional OpenClaw orchestration bridge** for external agent workflows. OpenClaw can delegate structured tasks to CodeIAK tools and coordinate higher-level flows, while CodeIAK remains the **controlled execution runtime**: file changes, review gates, backups, validation and revert stay inside CodeIAK's safety layer.
 
 What exists today:
 
@@ -260,7 +260,7 @@ Design constraints:
 - When a child step requires review, the external orchestrator must **stop** — apply happens in CodeIAK’s Review tab
 - CodeIAK remains the **execution runtime**; human-in-the-loop review is non-negotiable
 
-OpenClaw as an **in-app director** is a future direction, not current product behavior.
+A deeper in-app OpenClaw director remains a future direction; the current integration is an **external orchestration bridge** over validated CodeIAK workflows.
 
 ---
 
